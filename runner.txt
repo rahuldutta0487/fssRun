@@ -1,0 +1,23 @@
+for running this use account : dhrubadutta0499@gmail.com
+pass: R@huldutta2003
+
+datadogs : https://app.datadoghq.eu/monitors/manage?p=1
+
+For Activing vertual env: source ai-env/bin/activate
+
+
+
+# If the argocd runnning password came then use this
+
+kubectl -n argocd patch secret argocd-secret \
+-p '{"stringData": {
+  "admin.password": "$2a$10$HPIcbrKGKdPvylJ8YNQ6beK4mow4MvjZfyxeFM9yl1xiWNQJXrYKu",
+  "admin.passwordMtime": "'$(date +%FT%T%Z)'"
+}}'
+
+kubectl rollout restart deployment argocd-server -n argocd
+kubectl rollout status deployment argocd-server -n argocd
+
+Username: admin
+Password: admin123
+
